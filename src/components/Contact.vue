@@ -96,8 +96,8 @@
 export default {
   name: "Contact",
   mounted() {
-      import('./../assets/js/jqBootstrapValidation.js')
-      import('./../assets/js/contact_me.js')
+      import('./../../public/js/jqBootstrapValidation.js')
+      import('./../../public/js/contact_me.js')
   },
 };
 </script>

@@ -29,9 +29,14 @@
 </template>
 
 <script>
-
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('http://localhost:8080/sw.js');
+  });
+}
 
 export default { 
+  
   
   name: "App",
   data() {
@@ -51,8 +56,8 @@ export default {
     };
   },
   mounted() {
-    import ('./assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
-  },
+    import ('./../public/vendor/bootstrap/js/bootstrap.bundle.min.js')
+  }
 
 };
 </script>

@@ -84,7 +84,7 @@
 export default {
   name: "Home",
   mounted() {
-    import("./../assets/js/clean-blog.min.js");
+    import("./../../public/js/clean-blog.min.js");
   }
 };
 </script>
