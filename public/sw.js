@@ -27,11 +27,11 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "css/clean-blog.css",
-    "revision": "4b0d3d2e346f3158ec039ec77f3df605"
+    "revision": "3405046aa60094cd88bdc2ffefc2b8a8"
   },
   {
     "url": "css/clean-blog.min.css",
-    "revision": "a102ab987e38e81ababd8d780e21a97e"
+    "revision": "e1519adce7b95909226ced88a3daa7a4"
   },
   {
     "url": "favicon.ico",
@@ -119,7 +119,7 @@ self.__precacheManifest = [
   },
   {
     "url": "img_old/icons/safari-pinned-tab.svg",
-    "revision": "f22d501a35a87d9f21701cb031f6ea17"
+    "revision": "f78c0251d6ddd56ee219a1830ded71b4"
   },
   {
     "url": "img/contact-bg.jpg",
@@ -139,167 +139,167 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "1d6912e06a4c09fee111cafd75ff9eee"
+    "revision": "36f05194bb668e8c4b5f1764e6f24728"
   },
   {
     "url": "js/clean-blog.js",
-    "revision": "5c5da44b414001c67a91a5784fe4f011"
+    "revision": "c97160238bfcc00f43a68a31c993be48"
   },
   {
     "url": "js/clean-blog.min.js",
-    "revision": "d1230cf41e89baaadb43a67156d56e57"
+    "revision": "945636dd35b9ede618b068a4b28c1d6f"
   },
   {
     "url": "js/contact_me.js",
-    "revision": "57178cdd29a7fdb5debae95e4c62705d"
+    "revision": "ec4aba3bd91ba8fa3c7b304f66fcd7ea"
   },
   {
     "url": "js/jqBootstrapValidation.js",
-    "revision": "f345fca5f823232e58cdd66252ed624f"
+    "revision": "e60319e9f06ebc1798c2f3701fbf2898"
   },
   {
     "url": "manifest.json",
-    "revision": "691ec55b0031460f367ff9940459bf6a"
+    "revision": "82e5ee9db430b4ce7c7ee5d0ecfa4537"
   },
   {
     "url": "robots.txt",
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca"
+    "revision": "735ab4f94fbcd57074377afca324c813"
   },
   {
     "url": "scss/_bootstrap-overrides.scss",
-    "revision": "2f7847d72bd7531d7a3c5429790431e2"
+    "revision": "9363ae21282eede298b05d8bc8bf1281"
   },
   {
     "url": "scss/_contact.scss",
-    "revision": "ffebf658e69b4b7bae634d60577d4c12"
+    "revision": "d9213fb35bd1a878d8c01243dfc0ab85"
   },
   {
     "url": "scss/_footer.scss",
-    "revision": "2d22af81c0a73423b821a4c38108c1a9"
+    "revision": "e58e5e5b0ddee965fd372427a3a329ed"
   },
   {
     "url": "scss/_global.scss",
-    "revision": "dfa3a2222f205f9b76914177bf04bad5"
+    "revision": "af0d7be868ae7d286f0c67d9408b6921"
   },
   {
     "url": "scss/_masthead.scss",
-    "revision": "1a32a393c801dd76ff1b9c6bae92212a"
+    "revision": "d61689d432d10d87a344244656b0089b"
   },
   {
     "url": "scss/_mixins.scss",
-    "revision": "e3ffe6678db56b94a321e8b169fa85ce"
+    "revision": "fcef6fd936f578d4e65767505bea036f"
   },
   {
     "url": "scss/_navbar.scss",
-    "revision": "71ecd6fc71d1e9a097418f66a029b1e7"
+    "revision": "53552bbba7b9af92e23f7972a9d1fff0"
   },
   {
     "url": "scss/_post.scss",
-    "revision": "44de5ecbe5a5cea41d8c54ac55c0fc59"
+    "revision": "2b59519e65db2694655d68050b748f9f"
   },
   {
     "url": "scss/_variables.scss",
-    "revision": "cec18be4c21c17b9ca1255018b3d8793"
+    "revision": "bcfb6ace77263f173d03b9df65adc305"
   },
   {
     "url": "scss/clean-blog.scss",
-    "revision": "2dc968167bf6b81997c73f327adc21cd"
+    "revision": "b0efac33b6c71c58f423fde1ae33caf0"
   },
   {
     "url": "vendor/bootstrap/css/bootstrap-grid.css",
-    "revision": "59e3488e09a8bc96de5884586f3c67ec"
+    "revision": "c4cf38a1be22c3d8e660e00bd307c436"
   },
   {
     "url": "vendor/bootstrap/css/bootstrap-grid.min.css",
-    "revision": "7aba9868c6ffadaf2c45d1bafe86d2c3"
+    "revision": "3654b807c094151ff379c873f462b1da"
   },
   {
     "url": "vendor/bootstrap/css/bootstrap-reboot.css",
-    "revision": "b53d1eaf9daeab26f2772281ae060120"
+    "revision": "a6cd05cb930cdf828abf6a6ae37e3821"
   },
   {
     "url": "vendor/bootstrap/css/bootstrap-reboot.min.css",
-    "revision": "220e4dc01283a9e9c5c146f984eb8934"
+    "revision": "db63058f8ae01765f995eab3e7a3688d"
   },
   {
     "url": "vendor/bootstrap/css/bootstrap.css",
-    "revision": "bd551f56ce2be3eba2812e605ab4f5b2"
+    "revision": "c496036354fa5512674ddd744e845edb"
   },
   {
     "url": "vendor/bootstrap/css/bootstrap.min.css",
-    "revision": "a15c2ac3234aa8f6064ef9c1f7383c37"
+    "revision": "8fe70898895271ddc62823321011273a"
   },
   {
     "url": "vendor/bootstrap/js/bootstrap.bundle.js",
-    "revision": "a9247b1fe21ee409d0b37e74100de687"
+    "revision": "bd1604da466f7535f07899082f104eec"
   },
   {
     "url": "vendor/bootstrap/js/bootstrap.bundle.min.js",
-    "revision": "a454220fc07088bf1fdd19313b6bfd50"
+    "revision": "b41fe9374205bd087a4d4f0ab5a195be"
   },
   {
     "url": "vendor/bootstrap/js/bootstrap.js",
-    "revision": "7f827fe484ec04346553202782b0664b"
+    "revision": "5e7d168ed3203dab385e83f97f98f725"
   },
   {
     "url": "vendor/bootstrap/js/bootstrap.min.js",
-    "revision": "e1d98d47689e00f8ecbc5d9f61bdb42e"
+    "revision": "0a958254db529f99f475080fe2a6dcdb"
   },
   {
     "url": "vendor/fontawesome-free/css/all.css",
-    "revision": "4cd5b86baba794f3e4f6e54b501f0b6e"
+    "revision": "d097a65dea8ac13aaebc64e4b2621cf7"
   },
   {
     "url": "vendor/fontawesome-free/css/all.min.css",
-    "revision": "164a58dcca37a5b00c22e06ee8e2fc68"
+    "revision": "75025fc21912338f3edf1525b374f23c"
   },
   {
     "url": "vendor/fontawesome-free/css/brands.css",
-    "revision": "28ab16676debf5194d4a168ab7305611"
+    "revision": "121b49132a527bcc9cd48aff577e34bd"
   },
   {
     "url": "vendor/fontawesome-free/css/brands.min.css",
-    "revision": "27c105d6b1d79b59f9c59e0916d5251b"
+    "revision": "1f1b220d86695c266723193e49f3f146"
   },
   {
     "url": "vendor/fontawesome-free/css/fontawesome.css",
-    "revision": "f9696932582e4061778f0035eb8e8831"
+    "revision": "b1fa86c10ea7da8185a8a091a9259c87"
   },
   {
     "url": "vendor/fontawesome-free/css/fontawesome.min.css",
-    "revision": "df3b5091bcf015feb9f8dab2a8579ca9"
+    "revision": "150433d65c2dfcce7f6b3515a03ab7d6"
   },
   {
     "url": "vendor/fontawesome-free/css/regular.css",
-    "revision": "2e526933cb77bfeab639228211e7887f"
+    "revision": "ce540f27c6394f06074606a991e5b3e8"
   },
   {
     "url": "vendor/fontawesome-free/css/regular.min.css",
-    "revision": "6b92c90246f17fbba6faf5d94e1f2aa9"
+    "revision": "9da97e2bf8b7318f8e67aa16dca7f342"
   },
   {
     "url": "vendor/fontawesome-free/css/solid.css",
-    "revision": "d0a3f0ba3fe0c06e5471385f36ed244d"
+    "revision": "e08b68c8c0a6fde8527143f738ac9e9e"
   },
   {
     "url": "vendor/fontawesome-free/css/solid.min.css",
-    "revision": "685230fe920360c8d423498ebe891455"
+    "revision": "5a1d540df3a717c87cb6660280041686"
   },
   {
     "url": "vendor/fontawesome-free/css/svg-with-js.css",
-    "revision": "ed43a369a56fecb6131bbebfc9f688f3"
+    "revision": "81edf30f15dd105b468f2f37e2dbdbc9"
   },
   {
     "url": "vendor/fontawesome-free/css/svg-with-js.min.css",
-    "revision": "3b4cea40c72e186dd5fdea6e99195b88"
+    "revision": "07063e52b443c78161c0d13a214b050b"
   },
   {
     "url": "vendor/fontawesome-free/css/v4-shims.css",
-    "revision": "9062d26cf93b0264514b75c482f5b52d"
+    "revision": "5ba3378654a427881929cc0caa66d3c7"
   },
   {
     "url": "vendor/fontawesome-free/css/v4-shims.min.css",
-    "revision": "e0fe4a6191bf975ee1a105ea1cb4c41e"
+    "revision": "b0b42da5e2053810a8699bd43d1f71b6"
   },
   {
     "url": "vendor/fontawesome-free/webfonts/fa-brands-400.eot",
@@ -307,7 +307,7 @@ self.__precacheManifest = [
   },
   {
     "url": "vendor/fontawesome-free/webfonts/fa-brands-400.svg",
-    "revision": "bfa9c38bd6081dafe7278dedc4aad1d9"
+    "revision": "a5a8a66847a0fa86485fc5530a1fa6a9"
   },
   {
     "url": "vendor/fontawesome-free/webfonts/fa-brands-400.ttf",
@@ -327,7 +327,7 @@ self.__precacheManifest = [
   },
   {
     "url": "vendor/fontawesome-free/webfonts/fa-regular-400.svg",
-    "revision": "95f13e0be408d117bd3d9b366084a3ef"
+    "revision": "88f0c5bd0da36b4a5d3cadbb793254cd"
   },
   {
     "url": "vendor/fontawesome-free/webfonts/fa-regular-400.ttf",
@@ -347,7 +347,7 @@ self.__precacheManifest = [
   },
   {
     "url": "vendor/fontawesome-free/webfonts/fa-solid-900.svg",
-    "revision": "6ed5e3bc9018d2a03e2f1fadbf8a0a4a"
+    "revision": "6c36adff85a9daa51869d2ce16609c9f"
   },
   {
     "url": "vendor/fontawesome-free/webfonts/fa-solid-900.ttf",
@@ -363,19 +363,53 @@ self.__precacheManifest = [
   },
   {
     "url": "vendor/jquery/jquery.js",
-    "revision": "11c05eb286ed576526bf4543760785b9"
+    "revision": "320fa28debd36316365bb42ed6964314"
   },
   {
     "url": "vendor/jquery/jquery.min.js",
-    "revision": "220afd743d9e9643852e31a135a9f3ae"
+    "revision": "a6b6350ee94a3ea74595c065cbf58af0"
   },
   {
     "url": "vendor/jquery/jquery.slim.js",
-    "revision": "1a94b73b4b451a7872de5d76f57024e4"
+    "revision": "b66f82bff95817faddf776d5cfacd5c5"
   },
   {
     "url": "vendor/jquery/jquery.slim.min.js",
-    "revision": "d9b11ca4d877c327889805b73bb79edd"
+    "revision": "50dc009b65de5def1626271a5117f970"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(
+  /\.js$/,
+  new workbox.strategies.CacheFirst()
+ 
+);
+
+workbox.routing.registerRoute(
+  // Cache CSS files.
+  /\.css$/,
+  // Use cache but update in the background.
+  new workbox.strategies.StaleWhileRevalidate({
+    // Use a custom cache name.
+    cacheName: 'css-cache',
+  })
+);
+
+workbox.routing.registerRoute(
+  // Cache image files.
+  /\.(?:png|jpg|jpeg|svg|gif)$/,
+  // Use the cache if it's available.
+  new workbox.strategies.CacheFirst({
+    // Use a custom cache name.
+    cacheName: 'image-cache',
+    plugins: [
+      new workbox.expiration.Plugin({
+        // Cache only 20 images.
+        maxEntries: 20,
+        // Cache for a maximum of a week.
+        maxAgeSeconds: 7 * 24 * 60 * 60,
+      })
+    ],
+  })
+);
