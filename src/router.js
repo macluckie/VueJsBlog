@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //import Hometest from './views/Home.vue'
-import HelloWorld from '@/components/HelloWorld'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Article from '@/components/Article'

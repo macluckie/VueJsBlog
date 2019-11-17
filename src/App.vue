@@ -31,7 +31,7 @@
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('http://localhost:8080/sw.js');
+    navigator.serviceWorker.register('http://'+window.location.host + '/sw.js');
   });
 }
 
@@ -56,6 +56,7 @@ export default {
     };
   },
   mounted() {
+    console.log(window.location.host + '/sw.js')
     import ('./../public/vendor/bootstrap/js/bootstrap.bundle.min.js')
   }
 
