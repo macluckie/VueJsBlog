@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">My Blog</a>
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -25,19 +25,13 @@
       </div>
     </nav>
     <router-view />
-
     <button id="install">installer l'application</button>
   </div>
 </template>
 
 <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register(
-      "http://" + window.location.host + "/sw.js"
-    );
-  });
-}
+//import("./callServiceWorker.js")
+import axios from "axios";
 
 export default {
   name: "App",
@@ -58,38 +52,36 @@ export default {
     };
   },
   mounted() {
-    console.log(window.location.host + "/sw.js");
     import("./../public/vendor/bootstrap/js/bootstrap.bundle.min.js");
-
-    let deferredPrompt;
-
-    window.addEventListener("beforeinstallprompt", e => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-
-      deferredPrompt = e;
-
-      var btnAdd = document.getElementById("install");
-      console.log(btnAdd);
-      btnAdd.style.display = "block";
-
-      btnAdd.addEventListener("click", e => {
-        // hide our user interface that shows our A2HS button
-        btnAdd.style.display = "none";
-        // Show the prompt
-        deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
-        deferredPrompt.userChoice.then(choiceResult => {
-          if (choiceResult.outcome === "accepted") {
-            console.log("User accepted the A2HS prompt");
-          } else {
-            console.log("User dismissed the A2HS prompt");
-          }
-          deferredPrompt = null;
-        });
+    // import("./pwaButton.js")
+    axios
+      .post(process.env.VUE_APP_URLAPI + "api/login_check", {
+        username: process.env.VUE_APP_USERNAME,
+        password: process.env.VUE_APP_PASSWORD
+      })
+      .then(response => {
+        this.token = response.data.token;
+        axios
+          .get(process.env.VUE_APP_URLAPI + "articleId", {
+            headers: {
+              Authorization: "Bearer " + response.data.token
+            }
+          })
+          .then(response => {
+            var id =
+              Math.floor(
+                Math.random() * (response.data.maxId - response.data.minId + 1)
+              ) + response.data.minId;
+            this.nav_links.forEach(function(value) {
+              if (value.name === "Article") {
+                value.route = "/article/" + id;
+              }
+            });
+          });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
-    });
   }
 };
 </script>

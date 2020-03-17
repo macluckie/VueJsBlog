@@ -5,13 +5,19 @@ import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Article from '@/components/Article'
 import Home from '@/components/Home'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
-   
+    
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
     {
       path: '/about',
       name: 'About',
@@ -32,6 +38,10 @@ export default new Router({
       name: 'Home',
       component: Home
     },
+    {
+      path: '*',
+      redirect: '/login'
+    }
   //  {
     //  path: '/abouttest',
       //name: 'about',
