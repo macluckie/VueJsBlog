@@ -6,6 +6,10 @@ import Contact from '@/components/Contact'
 import Article from '@/components/Article'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import Edition from '@/components/Edition'
+import store from './store'
+import axios from "axios";
+
 
 Vue.use(Router)
 
@@ -39,16 +43,44 @@ export default new Router({
       component: Home
     },
     {
+      path: '/edition',
+      name: 'Edition',
+      component: Edition,
+      beforeEnter: (to, from, next) => {          
+        axios
+          .get(process.env.VUE_APP_URLAPI + "check", {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem('token')
+            }
+          })
+          .then(response=> {
+            console.log(response);
+            next();  
+          })
+          .catch(error => {
+            console.log(error);
+            localStorage.removeItem('token');
+            next('/login');
+          })
+        
+
+
+      //   if (store.state.token == false || from.path != '/edition') {
+      //     next('/login');
+      //   }
+      // next();     
+
+      }
+    },
+
+    {
       path: '*',
-      redirect: '/login'
-    }
-  //  {
-    //  path: '/abouttest',
-      //name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      //component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    //}
+      name: 'Home',
+      component: Home
+    },
+
+
+    
+ 
   ]
 })

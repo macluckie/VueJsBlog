@@ -42,9 +42,12 @@
 
 <script>
 import axios from "axios";
+import store from '../store';
+
 export default {
   name: "Home",
   mounted() {
+
     import("./../../public/js/clean-blog.min.js");
   },
   data() {
@@ -69,7 +72,7 @@ export default {
           })
           .then(response => {
             let allArticles;
-            allArticles = response.data.articles;
+            allArticles = response.data.article;
             allArticles.forEach((element, index) => {
               if (index <= 5) {
                 this.articles.push(element);
@@ -95,9 +98,7 @@ export default {
           let oldArticles = [];
           maxIdArticles = this.articles[this.articles.length - 1].id;
           allArticles = response.data.articles;
-
           allArticles.forEach((element, index) => {
-           
             if (
               element.id >= maxIdArticles &&
               element.id <= maxIdArticles + 5

@@ -124,7 +124,7 @@
 
 <script>
 import axios from "axios";
-
+import store from '../store';
 export default {
   name: "Login",
   data() {
@@ -138,13 +138,13 @@ export default {
   
   },
   created() {
+   
 	    import("./../assets/css/style.bundle.min.css");
   },
 
   methods: {
     identification: function(e) {
       e.preventDefault();
-
       axios
         .post(process.env.VUE_APP_URLAPI + "api/login_check", {
           username: this.identifiant,
@@ -152,7 +152,8 @@ export default {
         })
         .then(response => {
 			this.error = false;
-          console.log(response.data.token);
+          this.$store.dispatch('setToken',response.data.token);
+          this.$router.push('edition');
         })
         .catch(error => {
 			this.error = true;
