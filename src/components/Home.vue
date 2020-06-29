@@ -17,7 +17,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div v-for="(article, index) in articles" v-bind:key="index" class="post-preview">
+          <div v-for="(article, index) in allArticles" v-bind:key="index" class="post-preview">
             <a v-bind:href="'/article/' + article.id">
               <h2 class="post-title">{{article.title}}</h2>
               <h3 class="post-subtitle">{{article.subTitle}}</h3>
@@ -42,56 +42,39 @@
 
 <script>
 import axios from "axios";
-import store from '../store';
+import store from "../store";
 
 export default {
   name: "Home",
   mounted() {
-
     import("./../../public/js/clean-blog.min.js");
   },
   data() {
     return {
-      articles: [],
+      articles: [""],
       token: ""
     };
   },
   created() {
-    axios
-      .post(process.env.VUE_APP_URLAPI + "api/login_check", {
-        username: process.env.VUE_APP_USERNAME,
-        password: process.env.VUE_APP_PASSWORD
-      })
-      .then(response => {
-        this.token = response.data.token;
-        axios
-          .get(process.env.VUE_APP_URLAPI + "articles", {
-            headers: {
-              Authorization: "Bearer " + response.data.token
-            }
-          })
-          .then(response => {
-            let allArticles;
-            allArticles = response.data.article;
-            allArticles.forEach((element, index) => {
-              if (index <= 5) {
-                this.articles.push(element);
-              }
-            });
-          });
-      })
-      .catch(function(error) {
-        console.log(error);
+    store.getters.getArticles.then(response => {
+      response.forEach((element, index) => {
+        if (index <= 5) {
+          this.articles.push(element);
+        }
       });
+    });
+
+  
+  },
+  computed: {
+    allArticles: function() {
+      return this.articles;
+    }
   },
   methods: {
     paginate: function() {
       axios
-        .get(process.env.VUE_APP_URLAPI + "articles", {
-          headers: {
-            Authorization: "Bearer " + this.token
-          }
-        })
+        .get(process.env.VUE_APP_URLAPI + "articles")
         .then(response => {
           let maxIdArticles;
           let allArticles;

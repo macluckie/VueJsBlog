@@ -1,23 +1,36 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     token: false,
+    articles: ""
   },
   mutations: {
-    stateToken: (state)=>{
+    stateToken: (state) => {
       state.token = true;
-      console.log('value de token dans le store est true');
     }
   },
+  getters: {
+    getArticles: (state, getters) => {
+      return axios
+        .get(process.env.VUE_APP_URLAPI + "articles")
+        .then(response => {
+          state.articles = response.data.article;
+          return state.articles;
+
+        })
+    }
+
+  },
   actions: {
-    setToken: (context, token)=>{
-      localStorage.setItem('token',token);      
+    setToken: (context, token) => {
+      localStorage.setItem('token', token);
       context.commit('stateToken');
-    },   
+    },
 
   }
 })

@@ -25,7 +25,7 @@
       </div>
     </nav>
     <router-view />
-    <button id="install">installer l'application</button>
+    <!-- <button id="install">installer l'application</button> -->
   </div>
 </template>
 
@@ -55,29 +55,17 @@ export default {
     import("./../public/vendor/bootstrap/js/bootstrap.bundle.min.js");
     // import("./pwaButton.js")
     axios
-      .post(process.env.VUE_APP_URLAPI + "api/login_check", {
-        username: process.env.VUE_APP_USERNAME,
-        password: process.env.VUE_APP_PASSWORD
-      })
+      .get(process.env.VUE_APP_URLAPI + "articleId")
       .then(response => {
-        this.token = response.data.token;
-        axios
-          .get(process.env.VUE_APP_URLAPI + "articleId", {
-            headers: {
-              Authorization: "Bearer " + response.data.token
-            }
-          })
-          .then(response => {
-            var id =
-              Math.floor(
-                Math.random() * (response.data.maxId - response.data.minId + 1)
-              ) + response.data.minId;
-            this.nav_links.forEach(function(value) {
-              if (value.name === "Article") {
-                value.route = "/article/" + id;
-              }
-            });
-          });
+        var id =
+          Math.floor(
+            Math.random() * (response.data.maxId - response.data.minId + 1)
+          ) + response.data.minId;
+        this.nav_links.forEach(function(value) {
+          if (value.name === "Article") {
+            value.route = "/article/" + id;
+          }
+        });
       })
       .catch(function(error) {
         console.log(error);

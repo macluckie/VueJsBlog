@@ -124,7 +124,6 @@
 
 <script>
 import axios from "axios";
-import store from '../store';
 export default {
   name: "Login",
   data() {
@@ -133,12 +132,9 @@ export default {
       password: "",
       error: false
     };
-  },
-  mounted() {
-  
-  },
-  created() {
-   
+  }
+  ,
+  created() {   
 	    import("./../assets/css/style.bundle.min.css");
   },
 
@@ -151,7 +147,7 @@ export default {
           password: this.password
         })
         .then(response => {
-			this.error = false;
+			    this.error = false;
           this.$store.dispatch('setToken',response.data.token);
           this.$router.push('edition');
         })

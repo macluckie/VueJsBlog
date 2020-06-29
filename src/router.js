@@ -16,7 +16,7 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-    
+
     {
       path: '/login',
       name: 'Login',
@@ -46,41 +46,21 @@ export default new Router({
       path: '/edition',
       name: 'Edition',
       component: Edition,
-      beforeEnter: (to, from, next) => {          
+      beforeEnter: (to, from, next) => {
         axios
-          .get(process.env.VUE_APP_URLAPI + "check", {
+          .get(process.env.VUE_APP_URLAPI + "access", {
             headers: {
               Authorization: "Bearer " + localStorage.getItem('token')
             }
           })
-          .then(response=> {
-            console.log(response);
-            next();  
+          .then(response => {
+            next();
           })
           .catch(error => {
-            console.log(error);
             localStorage.removeItem('token');
             next('/login');
           })
-        
-
-
-      //   if (store.state.token == false || from.path != '/edition') {
-      //     next('/login');
-      //   }
-      // next();     
-
       }
     },
-
-    {
-      path: '*',
-      name: 'Home',
-      component: Home
-    },
-
-
-    
- 
   ]
 })
