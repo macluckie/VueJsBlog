@@ -1,17 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //import Hometest from './views/Home.vue'
-import HelloWorld from '@/components/HelloWorld'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Article from '@/components/Article'
 import Home from '@/components/Home'
+import Login from '@/components/Login'
+import Edition from '@/components/Edition'
+import store from './store'
+import axios from "axios";
+
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
-   
+
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
     {
       path: '/about',
       name: 'About',
@@ -32,13 +42,25 @@ export default new Router({
       name: 'Home',
       component: Home
     },
-  //  {
-    //  path: '/abouttest',
-      //name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      //component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    //}
+    {
+      path: '/edition',
+      name: 'Edition',
+      component: Edition,
+      beforeEnter: (to, from, next) => {
+        axios
+          .get(process.env.VUE_APP_URLAPI + "access", {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem('token')
+            }
+          })
+          .then(response => {
+            next();
+          })
+          .catch(error => {
+            localStorage.removeItem('token');
+            next('/login');
+          })
+      }
+    },
   ]
 })

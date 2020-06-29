@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">My Blog</a>
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -25,14 +25,15 @@
       </div>
     </nav>
     <router-view />
+    <!-- <button id="install">installer l'application</button> -->
   </div>
 </template>
 
 <script>
+//import("./callServiceWorker.js")
+import axios from "axios";
 
-
-export default { 
-  
+export default {
   name: "App",
   data() {
     return {
@@ -51,13 +52,27 @@ export default {
     };
   },
   mounted() {
-    import ('./assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
-  },
-
+    import("./../public/vendor/bootstrap/js/bootstrap.bundle.min.js");
+    // import("./pwaButton.js")
+    axios
+      .get(process.env.VUE_APP_URLAPI + "articleId")
+      .then(response => {
+        var id =
+          Math.floor(
+            Math.random() * (response.data.maxId - response.data.minId + 1)
+          ) + response.data.minId;
+        this.nav_links.forEach(function(value) {
+          if (value.name === "Article") {
+            value.route = "/article/" + id;
+          }
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-
-
 </style>

@@ -1,78 +1,38 @@
 <template>
   <div>
-      <header class="masthead" style="background-image: url('img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Clean Blog</h1>
+              <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
-    <!-- Main Content -->
+    </header>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-preview">
-            <a href="post.html">
-              <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-              <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+          <div v-for="(article, index) in allArticles" v-bind:key="index" class="post-preview">
+            <a v-bind:href="'/article/' + article.id">
+              <h2 class="post-title">{{article.title}}</h2>
+              <h3 class="post-subtitle">{{article.subTitle}}</h3>
             </a>
             <p class="post-meta">
               Posted by
-              <a href="#">Start Bootstrap</a>
-              on September 24, 2019
+              <a href="#">{{article.auteur}}</a>
+              {{article.date}}
             </p>
           </div>
           <hr />
-          <div class="post-preview">
-            <a href="post.html">
-              <h2
-                class="post-title"
-              >I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2>
-            </a>
-            <p class="post-meta">
-              Posted by
-              <a href="#">Start Bootstrap</a>
-              on September 18, 2019
-            </p>
-          </div>
-          <hr />
-          <div class="post-preview">
-            <a href="post.html">
-              <h2 class="post-title">Science has not yet mastered prophecy</h2>
-              <h3
-                class="post-subtitle"
-              >We predict too much for the next year and yet far too little for the next ten.</h3>
-            </a>
-            <p class="post-meta">
-              Posted by
-              <a href="#">Start Bootstrap</a>
-              on August 24, 2019
-            </p>
-          </div>
-          <hr />
-          <div class="post-preview">
-            <a href="post.html">
-              <h2 class="post-title">Failure is not an option</h2>
-              <h3
-                class="post-subtitle"
-              >Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-            </a>
-            <p class="post-meta">
-              Posted by
-              <a href="#">Start Bootstrap</a>
-              on July 8, 2019
-            </p>
-          </div>
-          <hr />
+
           <!-- Pager -->
           <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            <a v-on:click="paginate" class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
           </div>
         </div>
       </div>
@@ -81,14 +41,60 @@
 </template>
 
 <script>
+import axios from "axios";
+import store from "../store";
+
 export default {
   name: "Home",
   mounted() {
-    import("./../assets/js/clean-blog.min.js");
+    import("./../../public/js/clean-blog.min.js");
+  },
+  data() {
+    return {
+      articles: [""],
+      token: ""
+    };
+  },
+  created() {
+    store.getters.getArticles.then(response => {
+      response.forEach((element, index) => {
+        if (index <= 5) {
+          this.articles.push(element);
+        }
+      });
+    });
+
+  
+  },
+  computed: {
+    allArticles: function() {
+      return this.articles;
+    }
+  },
+  methods: {
+    paginate: function() {
+      axios
+        .get(process.env.VUE_APP_URLAPI + "articles")
+        .then(response => {
+          let maxIdArticles;
+          let allArticles;
+          let oldArticles = [];
+          maxIdArticles = this.articles[this.articles.length - 1].id;
+          allArticles = response.data.articles;
+          allArticles.forEach((element, index) => {
+            if (
+              element.id >= maxIdArticles &&
+              element.id <= maxIdArticles + 5
+            ) {
+              oldArticles.push(element);
+            }
+
+            this.articles = oldArticles;
+          });
+        });
+    }
   }
 };
 </script>
 <style scoped>
-
-
 </style>

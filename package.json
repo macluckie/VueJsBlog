@@ -1,5 +1,5 @@
 {
-  "name": "test_vu",
+  "name": "vueJsBlog",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,9 +11,11 @@
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "popper.js": "^1.16.0",
-    "register-service-worker": "^1.6.2",
+    "sw-precache-webpack-plugin": "^0.11.5",
+    "trix": "^1.2.3",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue-trix": "^1.1.11",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
