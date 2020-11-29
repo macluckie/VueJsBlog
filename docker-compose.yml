@@ -1,0 +1,46 @@
+version: "3.4"
+networks:
+    mynetwork:
+        ipam:
+            config:
+                - subnet: 172.20.0.0/24
+
+
+services: 
+    frontend:
+        container_name: frontend
+        restart: always
+        build:
+            context: .
+            target: 'develop-stage'
+        environment: 
+            VUE_APP_URLAPI: http://apiblog.local:4000/
+                
+        ports:
+        - '8081:8080'
+        volumes:
+        - '.:/app'
+        - '/app/node_modules'    
+
+
+
+
+        
+    
+
+                
+            
+    
+    
+         
+            
+
+
+   
+
+             
+    
+               
+
+  
+            

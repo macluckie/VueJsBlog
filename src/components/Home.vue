@@ -20,7 +20,7 @@
           <div v-for="(article, index) in allArticles" v-bind:key="index" class="post-preview">
             <a v-bind:href="'/article/' + article.id">
               <h2 class="post-title">{{article.title}}</h2>
-              <h3 class="post-subtitle">{{article.subTitle}}</h3>
+              <h3 class="post-subtitle">{{article.subtitle}}</h3>
             </a>
             <p class="post-meta">
               Posted by

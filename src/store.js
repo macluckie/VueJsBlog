@@ -19,7 +19,7 @@ export default new Vuex.Store({
       return axios
         .get(process.env.VUE_APP_URLAPI + "articles")
         .then(response => {
-          state.articles = response.data.article;
+          state.articles = response.data;
           return state.articles;
 
         })
