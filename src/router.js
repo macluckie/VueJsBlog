@@ -7,6 +7,8 @@ import Article from '@/components/Article'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Edition from '@/components/Edition'
+import Menu from '@/components/MenuBackOffice'
+
 import store from './store'
 import axios from "axios";
 
@@ -16,7 +18,6 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-
     {
       path: '/login',
       name: 'Login',
@@ -43,24 +44,38 @@ export default new Router({
       component: Home
     },
     {
+      path: '/menu',
+      name: 'Menu',
+      component: Menu,
+      beforeEnter: (to, from, next) => {
+        testToken(to,from,next);
+      }
+    },
+    {
       path: '/edition',
       name: 'Edition',
       component: Edition,
       beforeEnter: (to, from, next) => {
-        axios
-          .get(process.env.VUE_APP_URLAPI + "access", {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem('token')
-            }
-          })
-          .then(response => {
-            next();
-          })
-          .catch(error => {
-            localStorage.removeItem('token');
-            next('/login');
-          })
+        testToken(to,from,next);    
       }
     },
   ]
 })
+
+function testToken(to,from,next)
+{
+  axios
+  .get(process.env.VUE_APP_URLAPI + "access", {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem('token')
+    }
+  })
+  .then(response => {
+    next();
+  })
+  .catch(error => {
+    localStorage.removeItem('token');
+    next('/menu');
+  })
+    
+}

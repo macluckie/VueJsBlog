@@ -7,11 +7,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: false,
-    articles: ""
+    articles: "",
+    displayMenu: true,
   },
   mutations: {
     stateToken: (state) => {
       state.token = true;
+    },
+    displayMenuChanger: (state,payload)=>{
+      state.displayMenu = payload;      
     }
   },
   getters: {

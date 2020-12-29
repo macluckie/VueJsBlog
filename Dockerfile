@@ -7,7 +7,7 @@ RUN apk add git
 RUN yarn cache clean
 RUN yarn install
 COPY . .
-EXPOSE 8081
+EXPOSE 8082
 CMD ["yarn", "serve"]
 # build stage
 FROM develop-stage as build-stage

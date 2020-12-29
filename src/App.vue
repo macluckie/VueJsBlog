@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav
+      v-if="$store.state.displayMenu"
+      class="navbar navbar-expand-lg navbar-light fixed-top"
+      id="mainNav"
+    >
       <div class="container">
         <a class="navbar-brand" href="/">My Blog</a>
         <button
@@ -17,8 +21,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li v-for="(nav_link, index) in nav_links" v-bind:key="index" class="nav-item">
-              <router-link class="nav-link" :to="nav_link.route">{{nav_link.name}}</router-link>
+            <li
+              v-for="(nav_link, index) in nav_links"
+              v-bind:key="index"
+              class="nav-item"
+            >
+              <router-link class="nav-link" :to="nav_link.route">{{
+                nav_link.name
+              }}</router-link>
             </li>
           </ul>
         </div>
@@ -42,37 +52,50 @@ export default {
         { name: "About", route: "/about" },
         {
           name: "Article",
-          route: "/article/:id"
+          route: "/article/:id",
         },
         {
           name: "Contact",
-          route: "/contact"
-        }
-      ]
+          route: "/contact",
+        },
+      ],
     };
   },
   mounted() {
     import("./../public/vendor/bootstrap/js/bootstrap.bundle.min.js");
     // import("./pwaButton.js")
+    console.log(this.$store.state.token);
+    if (this.$store.state.token == false) {
+      this.nav_links.push({
+        name: "Login",
+        route: "/login",
+      });
+    } else {
+      this.nav_links.push({
+        name: "Deconnexion",
+        route: "/deconnexion",
+      });
+    }
+
     axios
       .get(process.env.VUE_APP_URLAPI + "articleId")
-      .then(response => {
+      .then((response) => {
         var id =
           Math.floor(
             Math.random() * (response.data.maxId - response.data.minId + 1)
           ) + response.data.minId;
-        this.nav_links.forEach(function(value) {
+        this.nav_links.forEach(function (value) {
           if (value.name === "Article") {
             value.route = "/article/" + id;
           }
         });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
-  }
+  },
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 </style>

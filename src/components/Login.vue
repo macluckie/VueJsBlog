@@ -132,12 +132,7 @@ export default {
       password: "",
       error: false
     };
-  }
-  ,
-  created() {   
-	    import("./../assets/css/style.bundle.min.css");
   },
-
   methods: {
     identification: function(e) {
       e.preventDefault();
@@ -147,9 +142,8 @@ export default {
           password: this.password
         })
         .then(response => {
-			    this.error = false;
           this.$store.dispatch('setToken',response.data.token);
-          this.$router.push('edition');
+          this.$router.replace({name: 'Menu'});
         })
         .catch(error => {
 			this.error = true;
@@ -160,6 +154,8 @@ export default {
 </script>
 
 <style scoped>
+ @import'./../assets/css/style.bundle.min.css';
+ 
 .bg-logo {
   background-image: url(./../assets/bg-4.jpg);
 }
