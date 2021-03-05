@@ -26,7 +26,9 @@ export default {
     },
     goEdit(){
        this.$router.push({name: 'Edition'});
-
+    },
+    goCreate(){
+       this.$router.push({name: 'Create'});
     }
   },
 };

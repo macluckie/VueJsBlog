@@ -9,14 +9,21 @@ export default new Vuex.Store({
     token: false,
     articles: "",
     displayMenu: true,
+    btnLogin: true
   },
   mutations: {
-    stateToken: (state) => {
-      state.token = true;
+    stateToken: (state,payload) => {
+      state.token = payload;
     },
-    displayMenuChanger: (state,payload)=>{
-      state.displayMenu = payload;      
-    }
+    displayMenuChanger: (state, payload) => {
+      state.displayMenu = payload;
+    },
+
+    btnLoginChanger: (state, payload) => {
+      state.btnLogin = payload;
+      console.log(state.btnLogin)
+    },
+
   },
   getters: {
     getArticles: (state, getters) => {
@@ -25,7 +32,6 @@ export default new Vuex.Store({
         .then(response => {
           state.articles = response.data;
           return state.articles;
-
         })
     }
 
@@ -33,8 +39,14 @@ export default new Vuex.Store({
   actions: {
     setToken: (context, token) => {
       localStorage.setItem('token', token);
-      context.commit('stateToken');
+      localStorage.setItem('is_connnect', true);
+      // context.commit('stateToken');
     },
+    deconnexion: (context) => {
+      localStorage.removeItem('token');
+      localStorage.setItem('is_connnect', false);
+      window.location.replace('/');
+    }
 
   }
 })

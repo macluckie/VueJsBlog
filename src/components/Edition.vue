@@ -25,7 +25,6 @@
 
 <script>
 import Trix from "./Trix";
-import axios from "axios";
 
 export default {
   name: "Edition",
@@ -37,10 +36,14 @@ export default {
       pages: []
     };
   },
-  created() {
+  mounted() {
+    this.$store.commit("displayMenuChanger", false);
      this.$store.getters.getArticles.then(response=>{
         this.articles = response;
      }) 
+  },
+  destroyed() {
+     this.$store.commit("displayMenuChanger", true);
   },
   methods: {
     setPages() {

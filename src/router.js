@@ -7,9 +7,8 @@ import Article from '@/components/Article'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Edition from '@/components/Edition'
+import Create from '@/components/Create'
 import Menu from '@/components/MenuBackOffice'
-
-import store from './store'
 import axios from "axios";
 
 
@@ -59,6 +58,14 @@ export default new Router({
         testToken(to,from,next);    
       }
     },
+    {
+      path: '/create',
+      name: 'Create',
+      component: Create,
+      beforeEnter: (to, from, next) => {
+        testToken(to,from,next);    
+      }
+    },
   ]
 })
 
@@ -75,7 +82,8 @@ function testToken(to,from,next)
   })
   .catch(error => {
     localStorage.removeItem('token');
-    next('/menu');
+    localStorage.setItem('is_connnect', false);
+    next({path:"/login"});
   })
     
 }

@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <nav
-      v-if="$store.state.displayMenu"
+      v-if="displayMenu"
       class="navbar navbar-expand-lg navbar-light fixed-top"
       id="mainNav"
     >
       <div class="container">
-        <a class="navbar-brand" href="/">My Blog</a>
+        <router-link class="nav-link" to="/"> Acceuil</router-link>
+
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -22,13 +23,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li
-              v-for="(nav_link, index) in nav_links"
+              v-for="(nav_link, index) in navBar"
               v-bind:key="index"
               class="nav-item"
             >
-              <router-link class="nav-link" :to="nav_link.route">{{
-                nav_link.name
-              }}</router-link>
+              <router-link
+                class="nav-link"
+                :class="nav_link.name"
+                :to="nav_link.route"
+                v-on:click.native="deconnexion(nav_link.name)"
+              >
+                <div></div>
+                {{ nav_link.name }}</router-link
+              >
             </li>
           </ul>
         </div>
@@ -42,6 +49,7 @@
 <script>
 //import("./callServiceWorker.js")
 import axios from "axios";
+import store from "./store";
 
 export default {
   name: "App",
@@ -58,25 +66,47 @@ export default {
           name: "Contact",
           route: "/contact",
         },
+        {
+          name: "Login",
+          route: "/login",
+        },
       ],
+      is_connect: "",
     };
+  },
+  computed: {
+    displayMenu() {
+      return store.state.displayMenu;
+    },
+
+    navBar() {
+      if (store.state.token && localStorage.getItem("is_connnect")) {
+        this.nav_links = this.nav_links.filter((el) => {
+          return el.name != "Login";
+        });
+        this.nav_links.push({
+          name: "Deconnexion",
+          route: "#",
+        });
+        return this.nav_links;
+      }
+      return this.nav_links;
+    },
+  },
+  created() {
+    if (localStorage.getItem("is_connnect") == "true") {
+      this.nav_links = this.nav_links.filter((el) => {
+        return el.name != "Login";
+      });
+      this.nav_links.push({
+        name: "Deconnexion",
+        route: "#",
+      });
+      return this.nav_links;
+    }
   },
   mounted() {
     import("./../public/vendor/bootstrap/js/bootstrap.bundle.min.js");
-    // import("./pwaButton.js")
-    console.log(this.$store.state.token);
-    if (this.$store.state.token == false) {
-      this.nav_links.push({
-        name: "Login",
-        route: "/login",
-      });
-    } else {
-      this.nav_links.push({
-        name: "Deconnexion",
-        route: "/deconnexion",
-      });
-    }
-
     axios
       .get(process.env.VUE_APP_URLAPI + "articleId")
       .then((response) => {
@@ -93,6 +123,14 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
+  },
+  methods: {
+    deconnexion: function (routeName) {
+      if (routeName == "Deconnexion") {
+        this.$store.dispatch("deconnexion");
+        this.$store.commit("btnLoginChanger", true);
+      }
+    },
   },
 };
 </script>

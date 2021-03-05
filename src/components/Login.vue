@@ -144,6 +144,7 @@ export default {
         .then(response => {
           this.$store.dispatch('setToken',response.data.token);
           this.$router.replace({name: 'Menu'});
+          this.$store.commit('stateToken', true);
         })
         .catch(error => {
 			this.error = true;
